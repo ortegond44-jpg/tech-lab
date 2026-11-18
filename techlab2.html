@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tech&lab | Tecnología y Laboratorio Especializado</title>
+  <!-- Google Fonts para una tipografía moderna y comercial -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #030712;
+      --bg-mid: #0b1329;
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --card-border: rgba(56, 189, 248, 0.25);
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+      --whatsapp: #22c55e;
+      --whatsapp-hover: #16a34a;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 0%, #102347 0%, var(--bg-mid) 50%, var(--bg-dark) 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       NAVEGACIÓN / HEADER
+       ========================================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(3, 7, 18, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 1rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), #0284c7);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    }
+
+    .logo-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: #030712;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+    }
+
+    .logo-text span {
+      color: var(--primary);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* =========================================
+       BOTONES
+       ========================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-size: 0.98rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #030712;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-whatsapp {
+      background: var(--whatsapp);
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--whatsapp-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(34, 197, 94, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    /* =========================================
+       HERO / PORTADA
+       ========================================= */
+    .hero {
+      padding: 6rem 6% 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--primary);
+      border: 1px solid var(--card-border);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+      text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      font-size: 1.15rem;
+      text-align: center;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================
+       SECCIONES Y TÍTULOS CENTRALES
+       ========================================= */
+    section {
+      padding: 5rem 6%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* =========================================
+       ESPECIALIDADES DE LABORATORIO
+       ========================================= */
+    .specialties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .spec-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 1.8rem 1.5rem;
+      border-radius: var(--radius);
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .spec-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .spec-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .spec-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    /* =========================================
+       CATÁLOGO DE PRODUCTOS
+       ========================================= */
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .filter-btn {
+      background: var(--card-bg);
+      color: var(--text-muted);
+      border: 1px solid var(--card-border);
+      padding: 0.65rem 1.4rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.25s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--primary);
+      color: #030712;
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+    }
+
+    .product-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.12);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .product-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .product-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .payment-badges {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .pay-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 500;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 1.2rem;
+    }
+
+    /* =========================================
+       SERVICIO TÉCNICO Y RASTREO
+       ========================================= */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .panel h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--primary);
+    }
+
+    .panel > p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #e2e8f0;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: rgba(3, 7, 18, 0.9);
+      color: var(--text-main);
+      font-size: 0.98rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+    }
+
+    .status-box {
+      margin-top: 1.8rem;
+      padding: 1.4rem;
+      border-radius: 12px;
+      background: rgba(3, 7, 18, 0.8);
+      border: 1px solid var(--card-border);
+      display: none;
+    }
+
+    .status-box.visible {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 0.3rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--primary);
+      margin: 0.6rem 0;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    /* =========================================
+       FOOTER Y WHATSAPP FLOTANTE
+       ========================================= */
+    footer {
+      text-align: center;
+      padding: 3rem 6%;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 4rem;
+      background: rgba(3, 7, 18, 0.6);
+    }
+
+    .floating-wa {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--whatsapp);
+      color: white;
+      padding: 0.95rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      z-index: 200;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .floating-wa:hover {
+      background: var(--whatsapp-hover);
+      transform: scale(1.06);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO CON LOGO Y NAVEGACIÓN -->
+  <header>
+    <a href="#" class="logo-container">
+      <div class="logo-icon">
+        <!-- Ícono SVG profesional de circuito/microchip -->
+        <svg viewBox="0 0 24 24">
+          <path d="M9 2H11V5H13V2H15V5H17C18.1046 5 19 5.89543 19 7V9H22V11H19V13H22V15H19V17C19 18.1046 18.1046 19 17 19H15V22H13V19H11V22H9V19H7C5.89543 19 5 18.1046 5 17V15H2V13H5V11H2V9H5V7C5 5.89543 5.89543 5 7 5H9V2ZM7 7V17H17V7H7ZM9 9H15V15H9V9Z"/>
+        </svg>
+      </div>
+      <div class="logo-text">tech<span>&</span>lab</div>
+    </a>
+    <nav>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#servicio-tecnico">Servicio Técnico</a>
+      <a href="https://wa.me/573203988103?text=Hola%20tech%26lab,%20necesito%20asesor%C3%ADa" target="_blank" class="btn btn-whatsapp">
+        💬 WhatsApp
+      </a>
+    </nav>
+  </header>
+
+  <!-- SECCIÓN PRINCIPAL / HERO -->
+  <section class="hero">
+    <span class="badge">Venta Contado y Crédito • Laboratorio Especializado</span>
+    <h1>Tecnología de Vanguardia y <span>Soporte Técnico Experto</span></h1>
+    <p>Especialistas en microelectrónica, remanufactura de pantallas y venta de equipos multimarca con opciones de pago a tu medida.</p>
+    <div class="hero-actions">
+      <a href="#catalogo" class="btn btn-primary">Explorar Catálogo</a>
+      <a href="#servicio-tecnico" class="btn btn-outline">Servicio Técnico</a>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES DESTACADAS -->
+  <section style="padding-top: 0; padding-bottom: 2rem;">
+    <div class="specialties-grid">
+      <div class="spec-card">
+        <div class="spec-icon">🔬</div>
+        <h3>Microsoldadura</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Diagnóstico avanzado en placa base</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">📱</div>
+        <h3>Cambio de Visores</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Remanufactura de pantallas con OCA</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">⚡</div>
+        <h3>Puertos de Carga</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Reparación y sustitución rápida</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">💻</div>
+        <h3>Software & Equipos</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Venta y optimización multimarca</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO DE PRODUCTOS -->
+  <section id="catalogo">
+    <div class="section-header">
+      <h2>Catálogo Tecnológico</h2>
+      <p>Equipos de alta gama y accesorios con disponibilidad inmediata de contado y crédito.</p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" onclick="filtrarProductos('todos', this)">Todos</button>
+      <button class="filter-btn" onclick="filtrarProductos('smartphones', this)">Smartphones</button>
+      <button class="filter-btn" onclick="filtrarProductos('laptops', this)">Laptops</button>
+      <button class="filter-btn" onclick="filtrarProductos('accesorios', this)">Accesorios y Repuestos</button>
+    </div>
+
+    <div class="products-grid" id="contenedor-productos"></div>
+  </section>
+
+  <!-- SERVICIO TÉCNICO Y RASTREO -->
+  <section id="servicio-tecnico">
+    <div class="section-header">
+      <h2>Laboratorio Técnico Especializado</h2>
+      <p>Deja tus dispositivos en manos expertas. Ingresa tu equipo o consulta el estado de tu orden en tiempo real.</p>
+    </div>
+
+    <div class="lab-grid">
+      <!-- FORMULARIO DE INGRESO -->
+      <div class="panel">
+        <h3>Agendar Diagnóstico</h3>
+        <p>Registra los datos de tu dispositivo para generar una orden de servicio inmediata.</p>
+        <form id="form-reparacion">
+          <div class="form-group">
+            <label for="cliente">Nombre completo</label>
+            <input type="text" id="cliente" placeholder="Ej. Daniel Ortegón" required>
+          </div>
+          <div class="form-group">
+            <label for="equipo">Equipo / Modelo</label>
+            <input type="text" id="equipo" placeholder="Ej. Samsung S24 Ultra" required>
+          </div>
+          <div class="form-group">
+            <label for="falla">Falla o servicio requerido</label>
+            <textarea id="falla" rows="3" placeholder="Ej. Cambio de visor, microsoldadura..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Generar Orden de Servicio</button>
+        </form>
+        <div class="status-box" id="resultado-creacion"></div>
+      </div>
+
+      <!-- CONSULTA DE ESTADO -->
+      <div class="panel">
+        <h3>Rastrear mi Equipo</h3>
+        <p>Ingresa tu código de orden asignado (Prueba con <strong>ORD-101</strong> o <strong>ORD-102</strong>).</p>
+        <div class="form-group">
+          <label for="codigo-busqueda">Código de Orden</label>
+          <input type="text" id="codigo-busqueda" placeholder="Ej. ORD-101">
+        </div>
+        <button type="button" class="btn btn-outline" style="width: 100%;" onclick="consultarOrden()">Consultar Estado</button>
+
+        <div class="status-box" id="resultado-busqueda"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2026 <strong>tech&lab</strong> — Tecnología y Laboratorio Especializado. Todos los derechos reservados.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #64748b;">Línea de atención y WhatsApp: +57 300 7139445</p>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <a href="https://wa.me/573007139445?text=Hola%20tech%26lab,%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="floating-wa">
+    💬 Escríbenos
+  </a>
+
+  <!-- LÓGICA JAVASCRIPT -->
+  <script>
+    const TELEFONO_WHATSAPP = "573203988103";
+
+    const productos = [
+      {
+        id: 1,
+        nombre: "Samsung Galaxy S24 Ultra 256GB",
+        categoria: "smartphones",
+        precio: "$4.850.000 COP",
+        descripcion: "Pantalla Dynamic AMOLED 2X, cámara 200MP y garantía directa.",
+        icono: "📱",
+        credito: true
+      },
+      {
+        id: 2,
+        nombre: "iPhone 15 Pro 128GB",
+        categoria: "smartphones",
+        precio: "$4.390.000 COP",
+        descripcion: "Diseño en titanio, chip A17 Pro y puerto USB-C ultrarrápido.",
+        icono: "📲",
+        credito: true
+      },
+      {
+        id: 3,
+        nombre: "Laptop HP Pavilion 15 Core i5",
+        categoria: "laptops",
+        precio: "$2.450.000 COP",
+        descripcion: "16GB RAM, SSD 512GB, ideal para desarrollo y trabajo pesado.",
+        icono: "💻",
+        credito: true
+      },
+      {
+        id: 4,
+        nombre: "Audífonos Inalámbricos ANC Pro",
+        categoria: "accesorios",
+        precio: "$280.000 COP",
+        descripcion: "Cancelación activa de ruido y estuche con carga inalámbrica.",
+        icono: "🎧",
+        credito: false
+      },
+      {
+        id: 5,
+        nombre: "Cargador Rápido 45W USB-C",
+        categoria: "accesorios",
+        precio: "$115.000 COP",
+        descripcion: "Carga segura con protección inteligente contra sobrecalentamiento.",
+        icono: "🔌",
+        credito: false
+      },
+      {
+        id: 6,
+        nombre: "Kit Visor + OCA Alta Calidad",
+        categoria: "accesorios",
+        precio: "$95.000 COP",
+        descripcion: "Insumo profesional para talleres de remanufactura de pantallas.",
+        icono: "🛠️",
+        credito: false
+      }
+    ];
+
+    const ordenesBase = {
+      "ORD-101": { cliente: "Laura Gómez", equipo: "iPhone 13", falla: "Cambio de visor y táctil", estado: "Listo para entrega ✅" },
+      "ORD-102": { cliente: "Andrés Ruiz", equipo: "Samsung S23", falla: "Microsoldadura puerto de carga", estado: "En laboratorio 🔬" }
+    };
+
+    let ordenesGuardadas = JSON.parse(localStorage.getItem("techlab_ordenes")) || {};
+    let todasLasOrdenes = { ...ordenesBase, ...ordenesGuardadas };
+
+    function renderizarProductos(lista) {
+      const contenedor = document.getElementById("contenedor-productos");
+      contenedor.innerHTML = "";
+
+      lista.forEach(prod => {
+        const mensajeWA = encodeURIComponent(`Hola tech&lab, me interesa el producto: *${prod.nombre}* (${prod.precio}). Quisiera más detalles para compra de contado o crédito.`);
+        const enlaceWA = `https://wa.me/${TELEFONO_WHATSAPP}?text=${mensajeWA}`;
+
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div>
+            <span class="product-tag">${prod.categoria}</span>
+            <div class="product-icon">${prod.icono}</div>
+            <h3>${prod.nombre}</h3>
+            <p>${prod.descripcion}</p>
+          </div>
+          <div>
+            <div class="payment-badges">
+              <span class="pay-badge">💵 Contado</span>
+              ${prod.credito ? '<span class="pay-badge">💳 Crédito disponible</span>' : ''}
+            </div>
+            <div class="price">${prod.precio}</div>
+            <a href="${enlaceWA}" target="_blank" class="btn btn-whatsapp" style="width: 100%;">
+              💬 Consultar por WhatsApp
+            </a>
+          </div>
+        `;
+        contenedor.appendChild(card);
+      });
+    }
+
+    function filtrarProductos(categoria, boton) {
+      document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+      boton.classList.add("active");
+
+      if (categoria === "todos") {
+        renderizarProductos(productos);
+      } else {
+        const filtrados = productos.filter(p => p.categoria === categoria);
+        renderizarProductos(filtrados);
+      }
+    }
+
+    document.getElementById("form-reparacion").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const cliente = document.getElementById("cliente").value.trim();
+      const equipo = document.getElementById("equipo").value.trim();
+      const falla = document.getElementById("falla").value.trim();
+
+      const nuevoCodigo = "ORD-" + Math.floor(200 + Math.random() * 800);
+      const nuevaOrden = { cliente, equipo, falla, estado: "Recibido en recepción 📋" };
+
+      ordenesGuardadas[nuevoCodigo] = nuevaOrden;
+      todasLasOrdenes[nuevoCodigo] = nuevaOrden;
+      localStorage.setItem("techlab_ordenes", JSON.stringify(ordenesGuardadas));
+
+      const caja = document.getElementById("resultado-creacion");
+      caja.innerHTML = `
+        <strong>¡Orden registrada con éxito!</strong><br>
+        Tu código de seguimiento es: <span class="status-pill">${nuevoCodigo}</span><br>
+        <small style="color: var(--text-muted);">Guarda este código para consultar el avance en el panel contiguo.</small>
+      `;
+      caja.classList.add("visible");
+      this.reset();
+    });
+
+    function consultarOrden() {
+      const codigo = document.getElementById("codigo-busqueda").value.trim().toUpperCase();
+      const caja = document.getElementById("resultado-busqueda");
+
+      if (todasLasOrdenes[codigo]) {
+        const orden = todasLasOrdenes[codigo];
+        caja.innerHTML = `
+          <strong>Orden: ${codigo}</strong><br>
+          <span class="status-pill">${orden.estado}</span><br>
+          <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-muted);">
+            <strong>Cliente:</strong> ${orden.cliente}<br>
+            <strong>Equipo:</strong> ${orden.equipo}<br>
+            <strong>Servicio:</strong> ${orden.falla}
+          </p>
+        `;
+      } else {
+        caja.innerHTML = `<span style="color: #f87171;">No encontramos ninguna orden con el código <strong>${codigo || 'vacío'}</strong>. Verifica e intenta de nuevo.</span>`;
+      }
+      caja.classList.add("visible");
+    }
+
+    renderizarProductos(productos);
+  </script>
+</body>
+</html>
